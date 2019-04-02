@@ -1,12 +1,14 @@
 package com.pvbapps.moviefy.ui.main
 
 import android.app.Activity
+import com.pvbapps.moviefy.domain.repository.RepositoryModule
+import com.pvbapps.moviefy.domain.repository.interfaces.MovieRepository
 import com.pvbapps.moviefy.ui.utils.RuntimeScoped
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 
-@Module
+@Module(includes = [RepositoryModule::class])
 abstract class MainModule {
 
     @Module
@@ -15,9 +17,10 @@ abstract class MainModule {
         @Provides
         @RuntimeScoped
         fun providePresenter(
-            mainView: MainContract.View
+            mainView: MainContract.View,
+            movieRepository: MovieRepository
         ): MainContract.Presenter {
-            return MainPresenter(mainView)
+            return MainPresenter(mainView, movieRepository)
         }
     }
 

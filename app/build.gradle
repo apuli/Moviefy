@@ -22,11 +22,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 ext {
     ktlint_version = "0.31.0"
     dagger_version = "2.16"
+    retrofit_version = "2.5.0"
+    logging_interceptor_version = "3.10.0"
+    rxandroid_version = "2.1.1"
+    rxkotlin_version = "2.3.0"
+    requery_version = "1.5.1"
+    timber_version = "4.7.1"
 }
 
 dependencies {
@@ -44,6 +54,25 @@ dependencies {
 
     //Code style
     ktlint "com.github.shyiko:ktlint:$ktlint_version"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+
+    //Reactive Programming
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+
+    // Requery
+    implementation "io.requery:requery:$requery_version"
+    implementation "io.requery:requery-kotlin:$requery_version"
+    implementation "io.requery:requery-android:$requery_version"
+    kapt "io.requery:requery-processor:$requery_version"
+
+    //Timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
 
     //Test
     testImplementation 'junit:junit:4.12'
