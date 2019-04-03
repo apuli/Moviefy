@@ -8,6 +8,7 @@ import android.view.View
 import com.pvbapps.moviefy.R
 import com.pvbapps.moviefy.domain.model.Movie
 import com.pvbapps.moviefy.domain.model.MovieDetail
+import com.pvbapps.moviefy.ui.utils.DateUtils
 import com.pvbapps.moviefy.ui.utils.interfaces.ImageHelper
 import dagger.android.DaggerActivity
 import kotlinx.android.synthetic.main.activity_movie.*
@@ -58,6 +59,8 @@ class MovieActivity : DaggerActivity(), MovieContract.View {
         movieDetail_overview.text = movie.overview
         movieDetail_tagline.visibility = View.GONE
         movieDetail_genres.visibility = View.GONE
+        movieDetail_releaseDate.text =
+            "${getString(R.string.movieDetail_ReleaseDate)} ${DateUtils.getMovieFormatDateString(movie.releaseDate)}"
 
         imageHelper.loadImage(movie.posterPath, movieDetail_image)
     }
@@ -66,6 +69,8 @@ class MovieActivity : DaggerActivity(), MovieContract.View {
         movieDetail_title.text = movieDetail.title
         movieDetail_overview.text = movieDetail.overview
         movieDetail_tagline.text = movieDetail.tagline
+        movieDetail_releaseDate.text =
+            "${getString(R.string.movieDetail_ReleaseDate)} ${DateUtils.getMovieFormatDateString(movieDetail.releaseDate)}"
 
         var genres = String()
         movieDetail.genres.forEach { genres = "$genres $it," }
