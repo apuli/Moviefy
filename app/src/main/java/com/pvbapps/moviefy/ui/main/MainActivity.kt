@@ -1,21 +1,23 @@
 package com.pvbapps.moviefy.ui.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pvbapps.moviefy.R
 import com.pvbapps.moviefy.domain.model.Movie
 import com.pvbapps.moviefy.ui.adapters.MovieAdapter
+import com.pvbapps.moviefy.ui.movie.MovieActivity
 import dagger.android.DaggerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
-import androidx.recyclerview.widget.DividerItemDecoration
-import com.pvbapps.moviefy.ui.movie.MovieActivity
 
 class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieListener {
     @Inject
@@ -23,6 +25,15 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
 
     @Inject
     lateinit var movieAdapter: MovieAdapter
+
+    companion object {
+        fun newInstance(context: Context): Intent {
+            val intent = Intent(context, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            return intent
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -55,7 +66,8 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
         movies_recyclerView.layoutManager = layoutManager
 
         movies_recyclerView.addItemDecoration(
-            DividerItemDecoration(movies_recyclerView.context, layoutManager.orientation))
+            DividerItemDecoration(movies_recyclerView.context, layoutManager.orientation)
+        )
         movies_recyclerView.adapter = movieAdapter
     }
 
