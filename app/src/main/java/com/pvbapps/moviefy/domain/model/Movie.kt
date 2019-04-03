@@ -20,8 +20,6 @@ class Movie(
     val originalLanguage: String,
     @SerializedName("original_title")
     val originalTitle: String,
-    @SerializedName("genre_ids")
-    val genreIds: List<Int>,
     val adult: Boolean,
     val overview: String,
     @SerializedName("backdrop_path")
@@ -29,6 +27,27 @@ class Movie(
     @SerializedName("release_date")
     val releaseDate: String
 ) {
+    companion object {
+        fun getMovieFromDatabaseEntity(movieOfflineEntity: MovieOfflineEntity): Movie {
+            return Movie(
+                movieOfflineEntity.voteAverage,
+                movieOfflineEntity.voteCount,
+                movieOfflineEntity.id,
+                movieOfflineEntity.video,
+                movieOfflineEntity.mediaType,
+                movieOfflineEntity.title,
+                movieOfflineEntity.popularity,
+                movieOfflineEntity.posterPath,
+                movieOfflineEntity.originalLanguage,
+                movieOfflineEntity.originalTitle,
+                movieOfflineEntity.adult,
+                movieOfflineEntity.overview,
+                movieOfflineEntity.backdropPath,
+                movieOfflineEntity.releaseDate
+            )
+        }
+    }
+
     fun toDatabaseEntity(): MovieOfflineEntity {
         var movieEntity = MovieOfflineEntity()
         movieEntity.voteAverage = voteAverage

@@ -3,6 +3,7 @@ package com.pvbapps.moviefy.ui.main
 import android.app.Activity
 import com.pvbapps.moviefy.domain.repository.RepositoryModule
 import com.pvbapps.moviefy.domain.repository.interfaces.MovieRepository
+import com.pvbapps.moviefy.ui.adapters.MovieAdapter
 import com.pvbapps.moviefy.ui.utils.RuntimeScoped
 import dagger.Binds
 import dagger.Module
@@ -22,6 +23,11 @@ abstract class MainModule {
         ): MainContract.Presenter {
             return MainPresenter(mainView, movieRepository)
         }
+
+        @JvmStatic
+        @Provides
+        @RuntimeScoped
+        fun provideMovieListener(activity: MainActivity) = activity as MovieAdapter.MovieListener
     }
 
     @Binds

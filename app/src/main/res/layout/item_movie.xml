@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movie_layout"
+    android:padding="8dp"
+    android:maxHeight="260dp"
+    android:background="@color/gray_blue_dark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="140dp"
+        android:orientation="vertical"/>
+
+    <ImageView
+        android:id="@+id/movie_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/popcorn_placeholder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/separator"/>
+
+    <TextView
+        android:id="@+id/movie_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        style="@style/MovieTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Guardians of the Galaxy Vol. 2"/>
+
+    <TextView
+        android:id="@+id/movie_overview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        style="@style/MovieOverview"
+        app:layout_constraintTop_toBottomOf="@id/movie_title"
+        app:layout_constraintBottom_toTopOf="@id/movie_release"
+        app:layout_constraintStart_toEndOf="@id/separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="The Guardians must fight to keep their newfound family together as they unravel the mysteries of Peter Quill's true parentage."/>
+
+    <TextView
+        android:id="@+id/movie_release"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        style="@style/MovieReleaseDate"
+        app:layout_constraintTop_toBottomOf="@id/movie_overview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Release date: April 19, 2017"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

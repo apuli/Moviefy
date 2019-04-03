@@ -9,14 +9,16 @@ import dagger.android.AndroidInjector
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [
-    AndroidInjectionModule::class,
-    AppModule::class,
-    BindingModule::class,
-    NetworkingModule::class,
-    RepositoryModule::class,
-    DatabaseModule::class
-])
+@Component(
+    modules = [
+        AndroidInjectionModule::class,
+        AppModule::class,
+        BindingModule::class,
+        NetworkingModule::class,
+        RepositoryModule::class,
+        DatabaseModule::class
+    ]
+)
 interface AppComponent : AndroidInjector<MoviefyApp> {
     @Component.Builder
     abstract class Builder : AndroidInjector.Builder<MoviefyApp>()

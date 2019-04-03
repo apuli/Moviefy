@@ -15,7 +15,6 @@ class MainPresenter(
     private val view: MainContract.View,
     private val movieRepository: MovieRepository
 ) : MainContract.Presenter {
-
     private var moviesCompositeDisposable = CompositeDisposable()
 
     init {
@@ -38,12 +37,16 @@ class MainPresenter(
             .addTo(moviesCompositeDisposable)
     }
 
+    override fun onActivityCreated() {
+        view.setToolbarTitle()
+    }
+
     private fun onMoviesSaved() {
         movieRepository.getMoviesFromDatabase()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ movieOfflineEntity: MovieOfflineEntity? ->
-                Timber.d("Movies saved")
+            .subscribe({ movieOfflineEntity: MovieOfflineEntity ->
+                view.addMovie(Movie.getMovieFromDatabaseEntity(movieOfflineEntity))
             }, { throwable ->
                 Timber.e(throwable)
             })
