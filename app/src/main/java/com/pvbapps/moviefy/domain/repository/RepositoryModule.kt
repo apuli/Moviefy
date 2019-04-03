@@ -9,10 +9,12 @@ import com.pvbapps.moviefy.infrastructure.database.interfaces.DatabaseServer
 import dagger.Module
 import dagger.Provides
 
-@Module(includes = [
+@Module(
+    includes = [
         NetworkingModule::class,
         DatabaseModule::class
-])
+    ]
+)
 class RepositoryModule {
 
     @Provides

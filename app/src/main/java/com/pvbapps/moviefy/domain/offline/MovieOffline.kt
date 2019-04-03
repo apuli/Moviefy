@@ -24,4 +24,7 @@ interface MovieOffline : Parcelable, Persistable {
     var overview: String
     var backdropPath: String
     var releaseDate: String
+    var isTopRated: Boolean
+    var isPopular: Boolean
+    var isUpcoming: Boolean
 }

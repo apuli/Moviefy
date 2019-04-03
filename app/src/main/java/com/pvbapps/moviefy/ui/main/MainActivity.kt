@@ -80,4 +80,9 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
     override fun clearMovies() {
         movieAdapter.clearItems()
     }
+
+    override fun onDestroy() {
+        mainPresenter.onDestroy()
+        super.onDestroy()
+    }
 }

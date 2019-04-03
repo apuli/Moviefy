@@ -12,5 +12,6 @@ interface MainContract {
     interface Presenter {
         fun onActivityCreated()
         fun onCategorySelected(position: Int)
+        fun onDestroy()
     }
 }

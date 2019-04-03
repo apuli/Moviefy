@@ -23,7 +23,10 @@ class Movie(
     @SerializedName("backdrop_path")
     val backdropPath: String,
     @SerializedName("release_date")
-    val releaseDate: String
+    val releaseDate: String,
+    var isTopRated: Boolean = false,
+    var isPopular: Boolean = false,
+    var isUpcoming: Boolean = false
 ) {
     companion object {
         fun getMovieFromDatabaseEntity(movieOfflineEntity: MovieOfflineEntity): Movie {
@@ -40,7 +43,10 @@ class Movie(
                 movieOfflineEntity.adult,
                 movieOfflineEntity.overview,
                 movieOfflineEntity.backdropPath,
-                movieOfflineEntity.releaseDate
+                movieOfflineEntity.releaseDate,
+                movieOfflineEntity.isTopRated,
+                movieOfflineEntity.isPopular,
+                movieOfflineEntity.isUpcoming
             )
         }
     }
@@ -60,6 +66,9 @@ class Movie(
         movieEntity.overview = overview
         movieEntity.backdropPath = backdropPath
         movieEntity.releaseDate = releaseDate
+        movieEntity.isTopRated = isTopRated
+        movieEntity.isPopular = isPopular
+        movieEntity.isUpcoming = isUpcoming
         return movieEntity
     }
 }

@@ -1,6 +1,7 @@
 package com.pvbapps.moviefy.domain.repository.implementation
 
 import com.pvbapps.moviefy.domain.model.Movie
+import com.pvbapps.moviefy.domain.model.MovieCategory
 import com.pvbapps.moviefy.domain.offline.MovieOfflineEntity
 import com.pvbapps.moviefy.domain.repository.interfaces.MovieRepository
 import com.pvbapps.moviefy.domain.response.MoviesResponse
@@ -21,7 +22,8 @@ class MovieRepositoryImpl(
 
     override fun saveMovie(movie: Movie): Observable<*> = databaseServer.saveMovie(movie)
 
-    override fun getMoviesFromDatabase(): Observable<MovieOfflineEntity> = databaseServer.getOfflineMovies()
+    override fun getMoviesFromDatabase(category: MovieCategory): Observable<MovieOfflineEntity> =
+        databaseServer.getOfflineMovies(category)
 
     override fun deleteOfflineInfo(): Completable = databaseServer.deleteOfflineInfo()
 
@@ -30,4 +32,7 @@ class MovieRepositoryImpl(
     override fun getPopularMovies(): Single<MoviesResponse> = moviefyServer.getPopularMovies(API_KEY)
 
     override fun getUpcomingMovies(): Single<MoviesResponse> = moviefyServer.getUpcomingMovies(API_KEY)
+
+    override fun updateMovieCategory(movieId: Int, category: MovieCategory): Completable =
+        databaseServer.updateMovieCategory(movieId, category)
 }

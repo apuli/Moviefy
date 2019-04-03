@@ -1,6 +1,5 @@
 package com.pvbapps.moviefy.infrastructure
 
-import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import com.google.gson.Gson
@@ -26,7 +25,7 @@ class NetworkingModule {
     }
 
     @Provides
-    fun providesConnectionHelper(application: Application): ConnectionHelper {
+    fun providesConnectionHelper(application: MoviefyApp): ConnectionHelper {
         return ConnectionHelper(application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)
     }
 }
