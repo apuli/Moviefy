@@ -1,5 +1,6 @@
 package com.pvbapps.moviefy.infrastructure
 
+import com.pvbapps.moviefy.domain.model.MovieDetail
 import com.pvbapps.moviefy.domain.response.MoviesResponse
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -29,4 +30,10 @@ interface IMoviefyServer {
     fun getUpcomingMovies(
         @Query("api_key") apiKey: String
     ): Single<MoviesResponse>
+
+    @GET("movie/{movie_id}")
+    fun getMovie(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String
+    ): Single<MovieDetail>
 }

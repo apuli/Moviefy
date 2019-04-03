@@ -2,6 +2,7 @@ package com.pvbapps.moviefy.domain.repository.interfaces
 
 import com.pvbapps.moviefy.domain.model.Movie
 import com.pvbapps.moviefy.domain.model.MovieCategory
+import com.pvbapps.moviefy.domain.model.MovieDetail
 import com.pvbapps.moviefy.domain.offline.MovieOfflineEntity
 import com.pvbapps.moviefy.domain.response.MoviesResponse
 import io.reactivex.Completable
@@ -18,4 +19,6 @@ interface MovieRepository {
     fun getPopularMovies(): Single<MoviesResponse>
     fun getUpcomingMovies(): Single<MoviesResponse>
     fun updateMovieCategory(movieId: Int, category: MovieCategory): Completable
+    fun getOfflineMovie(movieId: Int): Observable<MovieOfflineEntity>
+    fun getMovie(movieId: Int): Single<MovieDetail>
 }

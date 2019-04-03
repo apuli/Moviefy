@@ -3,7 +3,7 @@ package com.pvbapps.moviefy.domain.model
 import com.google.gson.annotations.SerializedName
 import com.pvbapps.moviefy.domain.offline.MovieOfflineEntity
 
-class Movie(
+data class Movie(
     @SerializedName("vote_average")
     val voteAverage: Float,
     @SerializedName("vote_count")

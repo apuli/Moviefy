@@ -53,4 +53,8 @@ class RequeryServerImpl(val entityStore: KotlinReactiveEntityStore<Persistable>)
                     .set(MovieOfflineEntity.POPULAR, true)
                     .where(MovieOfflineEntity.ID.eq(movieId)).get().toCompletable()
         }
+
+    override fun getMovie(movieId: Int): Observable<MovieOfflineEntity> =
+        (entityStore select (MovieOfflineEntity::class)
+            where (MovieOfflineEntity::id eq movieId)).get().observable()
 }

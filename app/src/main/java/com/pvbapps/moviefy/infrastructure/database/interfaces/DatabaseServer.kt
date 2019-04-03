@@ -12,4 +12,5 @@ interface DatabaseServer {
     fun getOfflineMovies(category: MovieCategory): Observable<MovieOfflineEntity>
     fun deleteOfflineInfo(): Completable
     fun updateMovieCategory(movieId: Int, category: MovieCategory): Completable
+    fun getMovie(movieId: Int): Observable<MovieOfflineEntity>
 }

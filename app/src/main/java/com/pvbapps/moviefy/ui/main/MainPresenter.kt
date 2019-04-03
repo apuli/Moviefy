@@ -20,12 +20,7 @@ class MainPresenter(
     private val movieRepository: MovieRepository,
     private val connectionHelper: ConnectionHelper
 ) : MainContract.Presenter {
-
     private var moviesCompositeDisposable = CompositeDisposable()
-
-    init {
-        getMovieSingle(MovieCategory.TOP_RATED)
-    }
 
     override fun onActivityCreated() {
         view.setToolbarTitle()
@@ -91,6 +86,10 @@ class MainPresenter(
             }, { throwable ->
                 Timber.e(throwable)
             })
+    }
+
+    override fun onMovieClicked(movie: Movie) {
+        view.showMovieDetailScreen(movie.id)
     }
 
     override fun onDestroy() {

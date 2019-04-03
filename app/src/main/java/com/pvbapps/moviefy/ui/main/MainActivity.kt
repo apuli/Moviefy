@@ -15,14 +15,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.pvbapps.moviefy.ui.movie.MovieActivity
 
 class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieListener {
-
     @Inject
     lateinit var mainPresenter: MainContract.Presenter
+
     @Inject
     lateinit var movieAdapter: MovieAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -71,6 +71,7 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
     }
 
     override fun onMovieClick(movie: Movie) {
+        mainPresenter.onMovieClicked(movie)
     }
 
     override fun setToolbarTitle() {
@@ -84,6 +85,10 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
 
     override fun clearMovies() {
         movieAdapter.clearItems()
+    }
+
+    override fun showMovieDetailScreen(movieId: Int) {
+        startActivity(MovieActivity.newInstance(this, movieId))
     }
 
     override fun onDestroy() {

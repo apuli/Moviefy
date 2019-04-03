@@ -2,6 +2,7 @@ package com.pvbapps.moviefy.ui.utils.implementation
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.pvbapps.moviefy.R
 import com.pvbapps.moviefy.application.MoviefyApp
 import com.pvbapps.moviefy.ui.utils.interfaces.ImageHelper
 
@@ -15,6 +16,7 @@ class ImageHelperImpl(val context: MoviefyApp) : ImageHelper {
         Glide
             .with(context)
             .load("$IMAGE_BASE_URL$path")
+            .placeholder(R.drawable.popcorn_placeholder)
             .into(imageView)
     }
 }

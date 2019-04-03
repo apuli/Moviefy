@@ -7,11 +7,13 @@ interface MainContract {
         fun setToolbarTitle()
         fun addMovie(movie: Movie)
         fun clearMovies()
+        fun showMovieDetailScreen(movieId: Int)
     }
 
     interface Presenter {
         fun onActivityCreated()
         fun onCategorySelected(position: Int)
         fun onDestroy()
+        fun onMovieClicked(movie: Movie)
     }
 }
