@@ -14,4 +14,19 @@ interface IMoviefyServer {
         @Query("page") page: Int,
         @Query("api_key") apiKey: String
     ): Single<MoviesResponse>
+
+    @GET("movie/top_rated")
+    fun getTopRatedMovies(
+        @Query("api_key") apiKey: String
+    ): Single<MoviesResponse>
+
+    @GET("movie/popular")
+    fun getPopularMovies(
+        @Query("api_key") apiKey: String
+    ): Single<MoviesResponse>
+
+    @GET("movie/upcoming")
+    fun getUpcomingMovies(
+        @Query("api_key") apiKey: String
+    ): Single<MoviesResponse>
 }

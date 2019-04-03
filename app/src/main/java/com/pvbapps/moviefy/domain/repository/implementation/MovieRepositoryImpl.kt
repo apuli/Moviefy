@@ -15,6 +15,7 @@ class MovieRepositoryImpl(
     val moviefyServer: IMoviefyServer,
     val databaseServer: DatabaseServer
 ) : MovieRepository {
+
     override fun getMovies(listId: Int, page: Int): Single<MoviesResponse> =
         moviefyServer.getMovies(listId, page, API_KEY)
 
@@ -23,4 +24,10 @@ class MovieRepositoryImpl(
     override fun getMoviesFromDatabase(): Observable<MovieOfflineEntity> = databaseServer.getOfflineMovies()
 
     override fun deleteOfflineInfo(): Completable = databaseServer.deleteOfflineInfo()
+
+    override fun getTopRatedMovies(): Single<MoviesResponse> = moviefyServer.getTopRatedMovies(API_KEY)
+
+    override fun getPopularMovies(): Single<MoviesResponse> = moviefyServer.getPopularMovies(API_KEY)
+
+    override fun getUpcomingMovies(): Single<MoviesResponse> = moviefyServer.getUpcomingMovies(API_KEY)
 }

@@ -10,8 +10,6 @@ class Movie(
     val voteCount: Int,
     val id: Int,
     val video: Boolean,
-    @SerializedName("media_type")
-    val mediaType: String,
     val title: String,
     val popularity: Float,
     @SerializedName("poster_path")
@@ -34,7 +32,6 @@ class Movie(
                 movieOfflineEntity.voteCount,
                 movieOfflineEntity.id,
                 movieOfflineEntity.video,
-                movieOfflineEntity.mediaType,
                 movieOfflineEntity.title,
                 movieOfflineEntity.popularity,
                 movieOfflineEntity.posterPath,
@@ -54,7 +51,6 @@ class Movie(
         movieEntity.voteCount = voteCount
         movieEntity.id = id
         movieEntity.video = video
-        movieEntity.mediaType = mediaType
         movieEntity.title = title
         movieEntity.popularity = popularity
         movieEntity.posterPath = posterPath

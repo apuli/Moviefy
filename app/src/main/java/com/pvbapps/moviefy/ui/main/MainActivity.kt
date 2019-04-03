@@ -46,6 +46,7 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                mainPresenter.onCategorySelected(position)
             }
         }
 
@@ -74,5 +75,9 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
 
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
+    }
+
+    override fun clearMovies() {
+        movieAdapter.clearItems()
     }
 }
