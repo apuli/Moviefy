@@ -4,6 +4,8 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.pvbapps.moviefy.infrastructure.gson.AnnotationExclusionStrategy
+import com.pvbapps.moviefy.ui.utils.implementation.ImageHelperImpl
+import com.pvbapps.moviefy.ui.utils.interfaces.ImageHelper
 import dagger.Module
 import dagger.Provides
 
@@ -21,4 +23,7 @@ class AppModule {
             .setExclusionStrategies(AnnotationExclusionStrategy())
             .create()
     }
+
+    @Provides
+    fun providesImageHelper(context: MoviefyApp): ImageHelper = ImageHelperImpl(context)
 }

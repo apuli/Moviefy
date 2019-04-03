@@ -14,6 +14,7 @@ import dagger.android.DaggerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
+import androidx.recyclerview.widget.DividerItemDecoration
 
 class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieListener {
 
@@ -50,7 +51,11 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
             }
         }
 
-        movies_recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        movies_recyclerView.layoutManager = layoutManager
+
+        movies_recyclerView.addItemDecoration(
+            DividerItemDecoration(movies_recyclerView.context, layoutManager.orientation))
         movies_recyclerView.adapter = movieAdapter
     }
 

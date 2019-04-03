@@ -7,10 +7,14 @@ import com.pvbapps.moviefy.R
 import com.pvbapps.moviefy.domain.model.Movie
 import com.pvbapps.moviefy.ui.adapters.viewHolders.MovieViewHolder
 import com.pvbapps.moviefy.ui.utils.RuntimeScoped
+import com.pvbapps.moviefy.ui.utils.interfaces.ImageHelper
 import javax.inject.Inject
 
 @RuntimeScoped
-class MovieAdapter @Inject constructor(private val listener: MovieListener) :
+class MovieAdapter @Inject constructor(
+    private val listener: MovieListener,
+    private val imageHelper: ImageHelper
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val items = ArrayList<Movie>()
@@ -37,6 +41,6 @@ class MovieAdapter @Inject constructor(private val listener: MovieListener) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return MovieViewHolder(inflater.inflate(R.layout.item_movie, parent, false), listener)
+        return MovieViewHolder(inflater.inflate(R.layout.item_movie, parent, false), listener, imageHelper)
     }
 }
