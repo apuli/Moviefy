@@ -17,10 +17,12 @@ import com.pvbapps.moviefy.ui.hideKeyboard
 import com.pvbapps.moviefy.ui.movie.MovieActivity
 import dagger.android.DaggerActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.progress_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
 class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieListener {
+
     @Inject
     lateinit var mainPresenter: MainContract.Presenter
 
@@ -100,6 +102,14 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
 
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setHomeButtonEnabled(true)
+    }
+
+    override fun showProgress() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressBar.visibility = View.GONE
     }
 
     override fun clearMovies() {

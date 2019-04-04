@@ -36,6 +36,7 @@ class MainPresenter(
 
     override fun onCategorySelected(position: Int) {
         val category: MovieCategory = MovieCategory.values()[position]
+        view.showProgress()
 
         if (connectionHelper.isConnected) {
             getMovieSingle(category)
@@ -86,7 +87,11 @@ class MainPresenter(
             .flatMap { movies: List<Movie> -> Observable.fromIterable(movies) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { view.clearMovies() }
+            .doOnSubscribe {
+                view.showProgress()
+                view.clearMovies()
+            }
+            .doFinally { view.hideProgress() }
             .subscribe({ movie ->
                 view.addMovie(movie)
             }, { throwable ->
@@ -99,6 +104,7 @@ class MainPresenter(
         movieRepository.getMoviesFromDatabase(category)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { view.hideProgress() }
             .subscribe({ movieOfflineEntity: MovieOfflineEntity ->
                 view.addMovie(Movie.getMovieFromDatabaseEntity(movieOfflineEntity))
             }, { throwable ->

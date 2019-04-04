@@ -8,6 +8,8 @@ interface MovieContract {
         fun showToolbarTitle()
         fun showMovie(movie: Movie)
         fun showMovie(movieDetail: MovieDetail)
+        fun showProgress()
+        fun hideProgress()
     }
 
     interface Presenter {

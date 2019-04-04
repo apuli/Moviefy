@@ -9,4 +9,5 @@
     <color name="gray_light">#FAFAFA</color>
     <color name="gray_darker">#999999</color>
     <color name="gray_dark">#2B2A2A</color>
+    <color name="gray_translucent">#7f000000</color>
 </resources>

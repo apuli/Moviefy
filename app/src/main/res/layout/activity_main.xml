@@ -55,4 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/item_movie"/>
+
+    <include
+        layout="@layout/progress_view"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

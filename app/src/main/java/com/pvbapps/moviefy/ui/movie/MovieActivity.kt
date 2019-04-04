@@ -12,6 +12,7 @@ import com.pvbapps.moviefy.ui.utils.DateUtils
 import com.pvbapps.moviefy.ui.utils.interfaces.ImageHelper
 import dagger.android.DaggerActivity
 import kotlinx.android.synthetic.main.activity_movie.*
+import kotlinx.android.synthetic.main.progress_view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
@@ -77,6 +78,14 @@ class MovieActivity : DaggerActivity(), MovieContract.View {
         movieDetail_genres.text = "${getString(R.string.movieDetail_genres)} $genres"
 
         imageHelper.loadImage(movieDetail.posterPath, movieDetail_image)
+    }
+
+    override fun showProgress() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressBar.visibility = View.GONE
     }
 
     override fun onDestroy() {

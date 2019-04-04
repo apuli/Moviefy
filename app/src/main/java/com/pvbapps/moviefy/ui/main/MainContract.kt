@@ -9,6 +9,8 @@ interface MainContract {
         fun clearMovies()
         fun showMovieDetailScreen(movieId: Int)
         fun hideActivityKeyboard()
+        fun showProgress()
+        fun hideProgress()
     }
 
     interface Presenter {
