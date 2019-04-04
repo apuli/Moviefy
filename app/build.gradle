@@ -45,6 +45,7 @@ ext {
     material_design_version = "1.0.0"
     threeten_version = "1.2.0"
     lottie_version = "3.0.0"
+    mockito_core_version = "2.25.1"
 }
 
 dependencies {
@@ -95,6 +96,8 @@ dependencies {
 
     //Test
     testImplementation 'junit:junit:4.12'
+    // Mocking framework for unit tests
+    testImplementation "org.mockito:mockito-core:$mockito_core_version"
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }
