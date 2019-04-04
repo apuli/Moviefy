@@ -20,11 +20,17 @@ class MovieViewHolder(
     fun bind(movie: Movie) {
         movie_title.text = movie.title
         movie_overview.text = movie.overview
-        movie_release.text =
-            "${containerView.context.getString(R.string.movieDetail_ReleaseDate)} " +
-                    "${DateUtils.getMovieFormatDateString(movie.releaseDate)}"
 
-        imageHelper.loadImage(movie.posterPath, movie_image)
+        if (!movie.posterPath.isNullOrEmpty()) {
+            movie_release.text =
+                "${containerView.context.getString(R.string.movieDetail_ReleaseDate)} " +
+                    "${DateUtils.getMovieFormatDateString(movie.releaseDate)}"
+        }
+
+        if (!movie.posterPath.isNullOrEmpty()) {
+            imageHelper.loadImage(movie.posterPath, movie_image)
+        }
+
         movie_layout.setOnClickListener { listener.onMovieClick(movie) }
     }
 }

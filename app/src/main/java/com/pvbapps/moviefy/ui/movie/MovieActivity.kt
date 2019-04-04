@@ -70,14 +70,19 @@ class MovieActivity : DaggerActivity(), MovieContract.View {
         movieDetail_title.text = movieDetail.title
         movieDetail_overview.text = movieDetail.overview
         movieDetail_tagline.text = movieDetail.tagline
-        movieDetail_releaseDate.text =
-            "${getString(R.string.movieDetail_ReleaseDate)} ${DateUtils.getMovieFormatDateString(movieDetail.releaseDate)}"
+
+        if (!movieDetail.posterPath.isNullOrEmpty()) {
+            movieDetail_releaseDate.text =
+                "${getString(R.string.movieDetail_ReleaseDate)} ${DateUtils.getMovieFormatDateString(movieDetail.releaseDate)}"
+        }
 
         var genres = String()
         movieDetail.genres.forEach { genres = "$genres $it," }
         movieDetail_genres.text = "${getString(R.string.movieDetail_genres)} $genres"
 
-        imageHelper.loadImage(movieDetail.posterPath, movieDetail_image)
+        if (!movieDetail.posterPath.isNullOrEmpty()) {
+            imageHelper.loadImage(movieDetail.posterPath, movieDetail_image)
+        }
     }
 
     override fun showProgress() {
