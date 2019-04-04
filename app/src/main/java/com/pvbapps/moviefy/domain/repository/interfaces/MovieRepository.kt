@@ -21,4 +21,5 @@ interface MovieRepository {
     fun updateMovieCategory(movieId: Int, category: MovieCategory): Completable
     fun getOfflineMovie(movieId: Int): Observable<MovieOfflineEntity>
     fun getMovie(movieId: Int): Single<MovieDetail>
+    fun searchMovie(query: String): Single<MoviesResponse>
 }

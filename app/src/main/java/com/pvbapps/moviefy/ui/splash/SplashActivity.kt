@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import com.pvbapps.moviefy.R
+import com.pvbapps.moviefy.ui.fullScreenMode
 import com.pvbapps.moviefy.ui.main.MainActivity
 import dagger.android.DaggerActivity
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -23,9 +24,7 @@ class SplashActivity : DaggerActivity(), SplashContract.View {
     }
 
     private fun initUI() {
-        // Fullscreen mode
-        this.window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LOW_PROFILE or View.SYSTEM_UI_FLAG_IMMERSIVE
-            or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
+        fullScreenMode()
 
         window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
             if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0) {

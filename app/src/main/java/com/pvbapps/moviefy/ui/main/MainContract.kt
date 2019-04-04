@@ -8,6 +8,7 @@ interface MainContract {
         fun addMovie(movie: Movie)
         fun clearMovies()
         fun showMovieDetailScreen(movieId: Int)
+        fun hideActivityKeyboard()
     }
 
     interface Presenter {
@@ -15,5 +16,6 @@ interface MainContract {
         fun onCategorySelected(position: Int)
         fun onDestroy()
         fun onMovieClicked(movie: Movie)
+        fun searchMovie(query: String)
     }
 }

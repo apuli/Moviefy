@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pvbapps.moviefy.R
 import com.pvbapps.moviefy.domain.model.Movie
 import com.pvbapps.moviefy.ui.adapters.MovieAdapter
+import com.pvbapps.moviefy.ui.hideKeyboard
 import com.pvbapps.moviefy.ui.movie.MovieActivity
 import dagger.android.DaggerActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -69,10 +70,16 @@ class MainActivity : DaggerActivity(), MainContract.View, MovieAdapter.MovieList
             DividerItemDecoration(movies_recyclerView.context, layoutManager.orientation)
         )
         movies_recyclerView.adapter = movieAdapter
+
+        search_icon.setOnClickListener { mainPresenter.searchMovie(search_movie.text.toString()) }
     }
 
     override fun addMovie(movie: Movie) {
         movieAdapter.putItem(movie)
+    }
+
+    override fun hideActivityKeyboard() {
+        hideKeyboard()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

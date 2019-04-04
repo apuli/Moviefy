@@ -14,8 +14,8 @@ import io.reactivex.Observable
 import io.reactivex.Single
 
 class MovieRepositoryImpl(
-    val moviefyServer: IMoviefyServer,
-    val databaseServer: DatabaseServer
+    private val moviefyServer: IMoviefyServer,
+    private val databaseServer: DatabaseServer
 ) : MovieRepository {
 
     override fun getMovies(listId: Int, page: Int): Single<MoviesResponse> =
@@ -41,4 +41,6 @@ class MovieRepositoryImpl(
         databaseServer.getMovie(movieId)
 
     override fun getMovie(movieId: Int): Single<MovieDetail> = moviefyServer.getMovie(movieId, API_KEY)
+
+    override fun searchMovie(query: String): Single<MoviesResponse> = moviefyServer.searchMovie(API_KEY, query)
 }

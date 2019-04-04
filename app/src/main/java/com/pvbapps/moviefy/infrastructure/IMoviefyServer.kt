@@ -36,4 +36,10 @@ interface IMoviefyServer {
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String
     ): Single<MovieDetail>
+
+    @GET("search/movie")
+    fun searchMovie(
+        @Query("api_key") apiKey: String,
+        @Query("query") query: String
+    ): Single<MoviesResponse>
 }

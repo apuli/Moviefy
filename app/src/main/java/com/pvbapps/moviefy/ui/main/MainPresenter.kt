@@ -20,6 +20,7 @@ class MainPresenter(
     private val movieRepository: MovieRepository,
     private val connectionHelper: ConnectionHelper
 ) : MainContract.Presenter {
+
     private var moviesCompositeDisposable = CompositeDisposable()
 
     override fun onActivityCreated() {
@@ -75,6 +76,23 @@ class MainPresenter(
             view.clearMovies()
             getMoviesFromDatabase(category)
         }
+    }
+
+    override fun searchMovie(query: String) {
+        view.hideActivityKeyboard()
+        movieRepository.searchMovie(query)
+            .map { moviesResponse: MoviesResponse -> moviesResponse.results }
+            .toObservable()
+            .flatMap { movies: List<Movie> -> Observable.fromIterable(movies) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { view.clearMovies() }
+            .subscribe({ movie ->
+                view.addMovie(movie)
+            }, { throwable ->
+                Timber.e(throwable)
+            })
+            .addTo(moviesCompositeDisposable)
     }
 
     private fun getMoviesFromDatabase(category: MovieCategory) {
