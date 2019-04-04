@@ -4,7 +4,7 @@ import com.pvbapps.moviefy.domain.model.Movie
 import com.pvbapps.moviefy.domain.model.MovieCategory
 import com.pvbapps.moviefy.domain.model.MovieDetail
 import com.pvbapps.moviefy.domain.offline.MovieOfflineEntity
-import com.pvbapps.moviefy.domain.response.MoviesResponse
+import com.pvbapps.moviefy.infrastructure.response.MoviesResponse
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single

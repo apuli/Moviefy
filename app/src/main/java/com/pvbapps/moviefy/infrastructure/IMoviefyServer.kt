@@ -1,7 +1,7 @@
 package com.pvbapps.moviefy.infrastructure
 
 import com.pvbapps.moviefy.domain.model.MovieDetail
-import com.pvbapps.moviefy.domain.response.MoviesResponse
+import com.pvbapps.moviefy.infrastructure.response.MoviesResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

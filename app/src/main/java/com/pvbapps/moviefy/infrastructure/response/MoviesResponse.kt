@@ -1,4 +1,4 @@
-package com.pvbapps.moviefy.domain.response
+package com.pvbapps.moviefy.infrastructure.response
 
 import com.google.gson.annotations.SerializedName
 import com.pvbapps.moviefy.domain.model.Movie

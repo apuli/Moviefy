@@ -5,7 +5,7 @@ import com.pvbapps.moviefy.domain.model.MovieCategory
 import com.pvbapps.moviefy.domain.model.MovieDetail
 import com.pvbapps.moviefy.domain.offline.MovieOfflineEntity
 import com.pvbapps.moviefy.domain.repository.interfaces.MovieRepository
-import com.pvbapps.moviefy.domain.response.MoviesResponse
+import com.pvbapps.moviefy.infrastructure.response.MoviesResponse
 import com.pvbapps.moviefy.infrastructure.IMoviefyServer
 import com.pvbapps.moviefy.infrastructure.database.interfaces.DatabaseServer
 import com.pvbapps.moviefy.infrastructure.helpers.RetrofitHelper.Companion.API_KEY
